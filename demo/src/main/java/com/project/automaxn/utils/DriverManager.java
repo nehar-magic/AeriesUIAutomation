@@ -26,7 +26,7 @@ public class DriverManager {
             String browser = ConfigReader.getProperty("browser"); // Read browser choice from config
             switch (browser.toLowerCase()) {
                 case "chrome":
-                    System.setProperty("webdriver.chrome.driver", "D:\\Files\\SeleniumUIAutomationProject\\demo\\src\\main\\java\\com\\project\\automaxn\\resources\\drivers\\chromedriver-win64\\chromedriver.exe");
+                    System.setProperty("webdriver.chrome.driver", "src\\main\\java\\com\\project\\automaxn\\resources\\drivers\\chromedriver-win64\\chromedriver.exe");
 
                     // Set ChromeOptions for controlling the zoom percentage
                     ChromeOptions options = new ChromeOptions();
@@ -40,11 +40,11 @@ public class DriverManager {
                     js.executeScript("document.body.style.zoom='80%'");
                     break;
                 case "firefox":
-                    System.setProperty("webdriver.gecko.driver", "demo\\src\\main\\java\\com\\project\\automaxn\\resources\\drivers\\firefoxdriver\\geckodriver.exe");
+                    System.setProperty("webdriver.gecko.driver", "src\\main\\java\\com\\project\\automaxn\\resources\\drivers\\firefoxdriver\\geckodriver.exe");
                     driver = new FirefoxDriver();
                     break;
                 case "edge":
-                    System.setProperty("webdriver.edge.driver", "demo\\src\\main\\java\\com\\project\\automaxn\\resources\\drivers\\edgedriver\\msedgedriver.exe");
+                    System.setProperty("webdriver.edge.driver", "src\\main\\java\\com\\project\\automaxn\\resources\\drivers\\edgedriver\\msedgedriver.exe");
                     driver = new EdgeDriver();
                     break;
                 default:
