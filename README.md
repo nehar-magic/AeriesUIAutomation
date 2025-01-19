@@ -1,1 +1,1 @@
-# AeriesAutomation-UI
+# AeriesUIAutomationProject

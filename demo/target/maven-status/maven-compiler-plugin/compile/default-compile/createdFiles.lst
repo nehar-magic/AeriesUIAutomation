@@ -1,0 +1,6 @@
+com\project\automaxn\pages\HomePage.class
+com\project\automaxn\pages\BasePage.class
+com\project\automaxn\utils\JsonConfigReader.class
+com\project\automaxn\resources\config\ConfigReader.class
+com\project\automaxn\pages\LoginPage.class
+com\project\automaxn\utils\DriverManager.class
