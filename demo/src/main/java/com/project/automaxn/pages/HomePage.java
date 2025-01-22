@@ -10,7 +10,7 @@ public class HomePage extends BasePage{
     }
 
     //defining page elements
-    WebElement homePageTitle = getElementByXPath("//div[@class='page-title flex-container start']/h2");
+    WebElement homePageTitle = getElement("xpath", "//div[@class='page-title flex-container start']/h2");
 
     public boolean isUserLoggedIn() {
         return homePageTitle.isDisplayed();

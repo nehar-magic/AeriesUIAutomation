@@ -1,9 +1,10 @@
 package com.project.automaxn.pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import com.project.automaxn.utils.XPathObjects;
+
 
 public class MedicalLog extends BasePage {
 
@@ -12,21 +13,21 @@ public class MedicalLog extends BasePage {
     }
 
     public String addMedicalLogRecord() {
-        WebElement addNewRecordBtn = getElementByXPath("//input[contains(@value, 'Add New Record')]");
+        WebElement addNewRecordBtn = getElement("xpath",XPathObjects.MedicalLogPageXpaths.ADD_NEW_RECORD_BTN);
 
         addNewRecordBtn.click();
 
-        WebElement saveBtn = getElementByTitle("Save Record");
-        String medicalLogRecordcomment = "This is a test comment" + getTodaysDTS();
+        WebElement saveBtn = getElement("title",XPathObjects.MedicalLogPageXpaths.SAVE_BTN_TITLE);
+        String medicalLogRecordcomment = "This is a test comment" + getDateTimeStamp("ddMMyy");
 
-        enterText(getElementByXPath("//input[contains(@onchange, 'CD_DropDownGrid')]"), "01");
-        enterText(getElementByXPath("//input[contains(@ID, 'ST_txtKendoTimePicker')]"), "9:30 AM");
-        enterText(getElementByXPath("//input[contains(@ID, 'ET_txtKendoTimePicker')]"), "6:00 PM");
-        enterText(getElementByXPath("//input[contains(@onchange, 'RE_DropDownGrid')]"), "RC");
-        enterText(getElementByName("ctl00$MainContent$subMED$rptMedicalLog$ctl01$txtCO"), medicalLogRecordcomment);
-        enterText(getElementByXPath("//input[contains(@onchange, 'BC_DropDownGrid')]"), "Health Technician");
-        enterText(getElementByXPath("//input[contains(@onchange, 'IN_DropDownGrid')]"), "HCL");
-        click(saveBtn);
+        enterText(getElement("xpath", XPathObjects.MedicalLogPageXpaths.CD_DROPDOWN_GRID), "01");
+        enterText("xpath", XPathObjects.MedicalLogPageXpaths.ST_KENDO_TIME_PICKER, "9:30 AM");
+        enterText("xpath", XPathObjects.MedicalLogPageXpaths.ET_KENDO_TIME_PICKER, "6:00 PM");
+        enterText("xpath", XPathObjects.MedicalLogPageXpaths.RE_DROPDOWN_GRID, "RC");
+        enterText("name", XPathObjects.MedicalLogPageXpaths.TXT_CO_NAME, medicalLogRecordcomment);
+        enterText("xpath", XPathObjects.MedicalLogPageXpaths.BC_DROPDOWN_GRID, "Health Technician");
+        enterText("xpath", XPathObjects.MedicalLogPageXpaths.IN_DROPDOWN_GRID, "HCL");
+        click("title", XPathObjects.MedicalLogPageXpaths.SAVE_BTN_TITLE);
 
         return medicalLogRecordcomment;
     }

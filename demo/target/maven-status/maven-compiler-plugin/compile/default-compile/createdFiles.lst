@@ -1,7 +1,9 @@
 com\project\automaxn\utils\JsonConfigReader.class
 com\project\automaxn\pages\Demographics.class
+com\project\automaxn\utils\XPathObjects$MedicalLogPageXpaths.class
 com\project\automaxn\pages\HoverColorVerification.class
 com\project\automaxn\resources\config\ConfigReader.class
+com\project\automaxn\utils\XPathObjects.class
 com\project\automaxn\pages\LoginPage.class
 com\project\automaxn\pages\MedicalLog.class
 com\project\automaxn\pages\App.class
