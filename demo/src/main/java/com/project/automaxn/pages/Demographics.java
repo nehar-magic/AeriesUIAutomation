@@ -14,15 +14,15 @@ public class Demographics extends BasePage {
 
     public String addStudent() {
         //Click Add button
-        addBtn = getElementByXPath("//input[@value='Add']");
-        click(addBtn);
+       // addBtn = getElement("xpath", "//input[@value='Add']");
+        click("xpath", "//input[@value='Add']");
 
         //Click Student Not Found button
-        studentNotFoundBtn = getElementByXPath("//input[@value='Student Not Found']");
-        click(studentNotFoundBtn);
+       // studentNotFoundBtn = getElement("xpath", "//input[@value='Student Not Found']");
+        click("xpath", "//input[@value='Student Not Found']");
 
         //Click No on "Would you like to search for a sibling?" modal
-        click(getElementByXPath("//input[@value='No']"));
+        click("xpath", "//input[@value='No']");
 
         try {
             Thread.sleep(1000); // Pause for 1 second
@@ -32,10 +32,12 @@ public class Demographics extends BasePage {
         }
 
         //Fill important fields
-        String firstName = "test" + getTodaysDTS();
-        enterText(getinputFieldByFieldCode("STU.LN"), firstName);
-        enterText(getinputFieldByFieldCode("STU.FN"), "demo");
-        enterText(getElementByXPath("//td[@data-tcfc='STU.GN']/table//div/input"), "N");
+        String firstName = "test" + getDateTimeStamp("ddMMyy");
+        //enterText(getinputFieldByFieldCode("STU.LN"), firstName);
+        enterText("xpath",getinputFieldByFieldCode("STU.LN"), firstName );
+        //enterText(getinputFieldByFieldCode("STU.FN"), "demo");
+        enterText("xpath",getinputFieldByFieldCode("STU.FN"), "demo" );
+        enterText(getElement("xpath", "//td[@data-tcfc='STU.GN']/table//div//input"), "N");
         // try {
         //     Thread.sleep(4000); // Sleep for 1 second
         // } catch (InterruptedException e) {
@@ -43,24 +45,26 @@ public class Demographics extends BasePage {
         //     // or logging it if necessary, or just return from the method
         // }
 
-        String birthDateValue = getTodaysMonth() + getTodaysDate() + Integer.toString(Integer.parseInt(getTodaysYear()) - 10);
-
+        String birthDateValue = getDateTimeStamp("mmddyyyy");
         System.out.println("Student's BirthDate: " + birthDateValue);
 
-        WebElement birthDateElement = getElementByXPath("//td[@data-tcfc='STU.BD']//input[@role='combobox']");
-        click(birthDateElement);
+        WebElement birthDateElement = getElement("xpath", "//td[@data-tcfc='STU.BD']//input[@role='combobox']");
+        click("xpath", "//td[@data-tcfc='STU.BD']//div//input[@role='combobox']");
         birthDateElement.sendKeys(birthDateValue);
-        enterText(getElementByXPath("//td[@data-tcfc='STU.PED']//div/input"), "11");
-        enterText(getinputFieldByFieldCode("STU.PG"), "test parent" + getTodaysDTS());
+        enterText("xpath", "//td[@data-tcfc='STU.PED']//div/input", "11");
+        //enterText(getinputFieldByFieldCode("STU.PG"), "test parent" + getDateTimeStamp("ddMMyy"));
+        enterText("xpath" ,getinputFieldByFieldCode("STU.PG"), "test parent" + getDateTimeStamp("ddMMyy"));
+
+
 
         //Scroll to bottom half of the page
-        scrollAndEnterText((getElementByXPath("//td[@data-tcfc='STU.CL']//div/input")), "00");
-        enterText(getElementByXPath("//td[@data-tcfc='STU.ETH']//div/input"), "N");        
-        enterText(getElementByXPath("(//td[@data-tcfc='STU.RC1, STU.RC2, STU.RC3, STU.RC4, STU.RC5']//div/input)[1]"), "100");
+        scrollAndEnterText((getElement("xpath", "//td[@data-tcfc='STU.CL']//div//input")), "00");
+        enterText("xpath", "//td[@data-tcfc='STU.ETH']//div/input", "N");
+        enterText("xpath", "(//td[@data-tcfc='STU.RC1, STU.RC2, STU.RC3, STU.RC4, STU.RC5']//div//input)[1]", "100");
         // enterText((getinputFieldByFieldCode("STU.CL")), "00");
         //Click on Save Button
-        saveBtn = getElementByXPath("//div[@id='footer-btns']/input[@value='Save']");
-        click(saveBtn);
+       // saveBtn = getElementByXPath("//div[@id='footer-btns']/input[@value='Save']");
+        click("xpath", "//div[@id='footer-btns']/input[@value='Save']");
         return getCurrentStudentID();
     }
 }

@@ -13,10 +13,10 @@ public class LoginPage extends BasePage{
     }
 
     //defining page elements
-    WebElement usernameInpuElement = getElementById("Username_Aeries");
-    WebElement passwordInpuElement = getElementById("Password_Aeries");
-    WebElement yearDropdown = getElementByXPath("//span[@aria-labelledby=\"Year_Aeries_label\"]");
-    WebElement loginBtn = getElementByXPath("//input[@value='Log In']");
+    WebElement usernameInpuElement = getElement("id","Username_Aeries");
+    WebElement passwordInpuElement = getElement("id","Password_Aeries");
+    WebElement yearDropdown = getElement("xpath", "//span[@aria-labelledby=\"Year_Aeries_label\"]");
+    WebElement loginBtn = getElement("xpath", "//input[@value='Log In']");
     WebElement continueBtn;
 
     String username = JsonConfigReader.getCredential(ConfigReader.getProperty("role"), "username");
@@ -46,12 +46,12 @@ public class LoginPage extends BasePage{
     }
 
     public void clickLoginBtn() {
-        click(loginBtn);
-        continueBtn = getElementByName("btnContinueIn_Aeries");
+        click("xpath", "//input[@value='Log In']");
+        continueBtn = getElement("name" ,"btnContinueIn_Aeries");
     }
 
     public void clickContinueBtn() {
-        click(continueBtn);
+        click("name", "btnContinueIn_Aeries");
     }
 
     public void login() {
