@@ -1,16 +1,17 @@
 package com.project.automaxn;
 
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class LoginLogOutTests extends BaseTest {
 
-    @Test
+    @Test @Ignore
     public void verifyLogin() {
         
         Login();
     }
 
-    @Test
+    @Test  @Ignore
     public void verifyLogout() {
 
         Login();

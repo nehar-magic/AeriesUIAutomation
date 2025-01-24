@@ -27,7 +27,7 @@ public class BaseTest {
             throw new IllegalArgumentException("Base URL is not set in the configuration file.");
         }
         driver.get(ConfigReader.getProperty("baseUrl"));
-//        Login();
+        Login();
     }
 
     // @BeforeSuite
@@ -44,7 +44,7 @@ public class BaseTest {
 
         homePage = new HomePage(driver);
 
-        // Assert the login was successful
+        // Assert that the login was successful
         Assert.assertTrue(homePage.isUserLoggedIn(), "User could NOT log in successfully.");
     }
 
